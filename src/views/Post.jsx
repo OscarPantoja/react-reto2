@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 import PostForm from '../components/PostForm'
 
 class Post extends Component {
-  render () {
+  render() {
     return (
-      <PostForm />
+      <PostForm
+        onSubmit={this.props.onSubmit}
+      />
     )
   }
 }

@@ -6,7 +6,7 @@ import AppTextArea from './AppTextArea'
 import AppButton from './AppButton'
 
 class PostForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -18,20 +18,39 @@ class PostForm extends Component {
     }
   }
 
-  get timeRead () {
+  get readTime() {
     return this.state.description.length * 60
   }
 
-  onChange (event) {
+  onChange(event) {
     const { id, value } = event.target
 
     this.setState({ [id]: value })
   }
 
-  render () {
+  onSubmit(event) {
+    event.preventDefault()
+    if (this.props.onSubmit) {
+      this.props.onSubmit({
+        ...this.state,
+        readTime: this.readTime
+      })
+    }
+    this.setState({
+      title: '',
+      author: '',
+      description: '',
+      createdAt: new Date(),
+      image: ''
+    })
+  }
+
+  render() {
     return (
       <div className='row post-form'>
-        <form className='col-6'>
+        <form
+          onSubmit={this.onSubmit.bind(this)}
+          className='col-6'>
           <h1>Nuevo Post</h1>
 
           <AppInput
@@ -39,6 +58,7 @@ class PostForm extends Component {
             label='Autor'
             type='text'
             ariaDescribedBy='author name'
+            value={this.state.author}
             onChange={this.onChange.bind(this)}
           />
 
@@ -47,12 +67,14 @@ class PostForm extends Component {
             label='Titulo'
             type='text'
             ariaDescribedBy='post title'
+            value={this.state.title}
             onChange={this.onChange.bind(this)}
           />
 
           <AppTextArea
             id='description'
             label='Texto'
+            value={this.state.description}
             onChange={this.onChange.bind(this)}
           />
 
@@ -61,6 +83,7 @@ class PostForm extends Component {
             label='Imagen'
             type='text'
             ariaDescribedBy='url image'
+            value={this.state.image}
             onChange={this.onChange.bind(this)}
           />
 
@@ -71,11 +94,15 @@ class PostForm extends Component {
           />
         </form>
 
-        <img
-          src={this.state.image}
-          alt='image post preview'
-          className='col-6'
-        />
+        {
+          this.state.image ? (
+            <img
+              src={this.state.image}
+              alt='image post preview'
+              className='col-6'
+            />
+          ) : 'Ingresa un valor de URL en el campo imagen'
+        }
       </div>
     )
   }

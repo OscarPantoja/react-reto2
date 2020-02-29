@@ -3,7 +3,7 @@ import React from 'react'
 import PostCardBackground from './PostCardBackground'
 import PostCardBody from './PostCardBody'
 
-function PostCard (props) {
+function PostCard(props) {
   return (
     <div className='card mb-4 shadow-sm'>
       <PostCardBackground
@@ -11,6 +11,7 @@ function PostCard (props) {
       />
 
       <PostCardBody
+        title={props.title}
         text={props.text}
         readTime={props.readTime}
       >

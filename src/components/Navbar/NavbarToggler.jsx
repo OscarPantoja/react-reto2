@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NavbarToggler () {
+function NavbarToggler(props) {
   return (
     <button
       className='navbar-toggler'
@@ -10,6 +10,7 @@ function NavbarToggler () {
       aria-controls='navbarsExampleDefault'
       aria-expanded='false'
       aria-label='Toggle navigation'
+      onClick={props.onClick}
     >
       <span className='navbar-toggler-icon' />
     </button>

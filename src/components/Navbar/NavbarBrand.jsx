@@ -1,10 +1,10 @@
 import React from 'react'
 
-function NavbarBrand () {
+function NavbarBrand() {
   return (
     <a
       className='navbar-brand'
-      href='#'
+      href='/'
     >
       Navbar
     </a>
