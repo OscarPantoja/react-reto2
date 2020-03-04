@@ -7,13 +7,13 @@ function PostCard(props) {
   return (
     <div className='card mb-4 shadow-sm'>
       <PostCardBackground
-        img={props.img}
+        avatar={props.avatar}
       />
 
       <PostCardBody
-        title={props.title}
-        text={props.text}
-        readTime={props.readTime}
+        name={props.name}
+        description={props.description}
+        author={props.author}
       >
         {props.children}
       </PostCardBody>

@@ -4,10 +4,13 @@ function PostCardBody(props) {
   return (
     <div className='card-body'>
       <h5 className='card-title'>
-        {props.title}
+        {props.name}
       </h5>
       <p className='card-text'>
-        {props.text}
+        {props.description}
+      </p>
+      <p className='card-text'>
+        {props.author}
       </p>
       <div className='d-flex justify-content-between align-items-center'>
         {props.children}

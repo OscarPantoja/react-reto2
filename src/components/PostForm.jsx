@@ -10,7 +10,7 @@ class PostForm extends Component {
     super(props)
 
     this.state = {
-      title: '',
+      name: '',
       author: '',
       description: '',
       createdAt: new Date(),
@@ -37,7 +37,7 @@ class PostForm extends Component {
       })
     }
     this.setState({
-      title: '',
+      name: '',
       author: '',
       description: '',
       createdAt: new Date(),
@@ -63,7 +63,7 @@ class PostForm extends Component {
           />
 
           <AppInput
-            id='title'
+            id='name'
             label='Titulo'
             type='text'
             ariaDescribedBy='post title'

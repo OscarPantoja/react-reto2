@@ -1,12 +1,12 @@
 import React from 'react'
 
-function PostCardBackground (props) {
+function PostCardBackground(props) {
   return (
     <img
       className='bd-placeholder-img card-img-top'
       width='100%'
       height='225'
-      src={props.img}
+      src={props.avatar}
       alt={props.alt}
     />
   )

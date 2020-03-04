@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
+
+body {
+font-family: 'Trade Winds', cursive;
+}
+
 .app .container {
   padding-top: 2rem;
 }
@@ -5,3 +11,4 @@
 .post-form {
   padding-bottom: 2rem;
 }
+

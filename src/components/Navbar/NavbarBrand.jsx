@@ -6,7 +6,7 @@ function NavbarBrand() {
       className='navbar-brand'
       href='/'
     >
-      Navbar
+      Kodemia API
     </a>
   )
 }

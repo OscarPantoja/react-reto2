@@ -11,9 +11,10 @@ function PostList(props) {
             key={post.id || `post-${index}`}
             className='col-md-4' >
             <PostCard
-              title={post.title}
-              img={post.image}
-              text={post.text}
+              name={post.name}
+              avatar={post.avatar}
+              description={post.description}
+              author={post.author}
               readTime={post.readTime}
             >
               <PostCardsButtons
