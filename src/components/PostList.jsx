@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PostCard from '../components/PostCard'
 import PostCardsButtons from '../components/PostCardsButtons'
 
@@ -6,24 +7,26 @@ function PostList(props) {
   return (
     <div className='row'>
       {
-        props.list.map((post, index) => (
-          < div
-            key={post.id || `post-${index}`}
-            className='col-md-4' >
+        props.list.map((repo, index) => (
+          < Link
+            key={repo.id || `repo-${index}`}
+            className='col-md-4'
+            to={`/RepoDetail/${repo.author}/${repo.name}`}
+          >
             <PostCard
-              name={post.name}
-              avatar={post.avatar}
-              description={post.description}
-              author={post.author}
-              readTime={post.readTime}
+              name={repo.name}
+              avatar={repo.avatar}
+              description={repo.description}
+              author={repo.author}
+              readTime={repo.readTime}
             >
               <PostCardsButtons
-                edit={post.edit}
-                view={post.view}
+                edit={repo.edit}
+                view={repo.view}
               />
 
             </PostCard>
-          </div>
+          </Link>
         ))
       }
     </div >

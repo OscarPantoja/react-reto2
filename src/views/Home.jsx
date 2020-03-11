@@ -1,45 +1,29 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import AppLoading from '../components/AppLoading'
 import PostList from '../components/PostList'
+import api from '../Lib/Api'
 
-class Home extends Component {
-  constructor(props) {
-    super(props)
+function Home() {
 
-    this.state = {
-      posts: [],
-      loading: true
+  const [repos, setRepos] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function getRepos() {
+      const payload = await api.getRepos()
+      if (repos.length !== payload.data.repos.length) setRepos(payload.data.repos)
+      console.log(payload.data.repos)
+      setLoading(false)
     }
-  }
+    getRepos()
+  }, [repos])
 
-  async componentDidMount() {
+  if (loading) return <AppLoading />
 
-    const response = await window.fetch('https://api.github.com/users/kodemia/repos', {
-      headers: { Accept: 'application/vnd.github.v3+json' }
-    })
 
-    const payload = await response.json()
+  return <PostList list={repos} />
 
-    const posts = payload.map((badPost) =>
-      ({
-        name: badPost.name,
-        description: badPost.description,
-        avatar: badPost.owner.avatar_url,
-        author: badPost.owner.login
-
-      }))
-
-    this.setState({
-      posts,
-      loading: false
-    })
-
-  }
-
-  render() {
-    return <PostList list={this.state.posts} />
-  }
 }
 
 export default Home
